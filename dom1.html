@@ -1,0 +1,49 @@
+<html>
+    <title>Hello World</title>
+    <head>
+        <h1 id="wel" style="color: blueviolet;">Welcome to my To-Do App</h1>
+
+        <h3 id="here" style="color:rgb(60, 30, 88)">Here you  need to add something</h3>
+        <input type="text" id="input" style="padding: 2px;">
+        <button id="add" style="padding: 10px; color: rgb(78, 35, 118);">Add</button>
+        <ul id = "list" style="padding: 5px;"></ul>
+        
+    </head>
+</html>
+<script>
+    let input = document.getElementById("input");
+    let addbtn = document.getElementById("add");
+    let list =  document.getElementById("list");
+
+    addbtn.addEventListener("click", function(){
+        let task = input.value;
+        if(task.trim() === ""){
+            alert("Enter Something");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.innerText = task;
+
+        li.addEventListener("click", function(){
+            if(li.style.textDecoration === "line-through"){
+                li.style.textDecoration = "none";
+            }
+            else{
+                li.style.textDecoration = "line-through";
+            }
+        });
+
+        let del = document.createElement("button");
+        del.innerText ="x";
+
+      del.addEventListener("click", function(){
+        li.remove();
+      });
+
+      li.appendChild(del);
+      list.appendChild(li);
+      input.value  = "";
+
+    });
+</script>

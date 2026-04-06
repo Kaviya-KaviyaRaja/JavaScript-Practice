@@ -1,0 +1,94 @@
+<html>
+    <title>Calculator</title>
+    <head>
+        <h1 style="color: darkred; font-size: xx-large;">Welcome to my Calculator</h1>
+    </head>
+    <style>
+        .calculator {
+  width: 250px;
+  margin: auto;
+}
+input {
+  width: 100%;
+  height: 40px;
+  text-align: right;
+  font-size: 20px;
+}
+button {
+  width: 50px;
+  height: 50px;
+  margin: 2px;
+  font-size: 18px;
+}
+    </style>
+    <body>
+       <div class="calculator">
+        <input type="text" id="display" input>
+        <button class="num">7</button>
+          <button class="num">8</button>
+            <button class="num">9</button>
+              <button class="op">/</button>
+
+                <button class="num">4</button>
+                  <button class="num">5</button>
+                    <button class="num">6</button>
+                      <button class="op">*</button>
+
+                        <button class="num">1</button>
+                          <button class="num">2</button>
+                            <button class="num">3</button>
+                              <button class="op">-</button>
+
+                                <button class="num">0</button>
+                                  <button class="op">.</button>
+                                    <button class="op">+</button>
+                                      <button id="equal">=</button>
+
+                                        <button id="clear">AC</button>
+       </div>
+    </body>
+   
+</html>
+ <script>
+    let display = document.getElementById("display");
+     let numbers = document.querySelectorAll(".num");
+      let operators = document.querySelectorAll(".op");
+       let equal = document.getElementById("equal");
+        let clear = document.getElementById("clear");
+        let currentInput ="";
+
+        numbers.forEach(button =>{
+            button.addEventListener("click", function(){
+                currentInput += button.innerText;
+                display.value = currentInput;
+            });
+        });
+
+        operators.forEach(button => {
+            button.addEventListener("click", function(){
+                currentInput += button.innerText;
+                display.value = currentInput;
+            });
+        });
+
+        equal.addEventListener("click", function(){
+            try{
+                currentInput= eval(currentInput);
+                display.value =  currentInput
+            }
+            catch{
+                display.value = "Error";
+            }
+        });
+
+        clear.addEventListener("click", function(){
+            currentInput = "";
+            display.value="";
+        });
+
+
+
+         
+                
+        </script>
+
